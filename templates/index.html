@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Upload Document</h3>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <h4>Welcome to AI Document Assistant</h4>
+                    <p class="lead">Upload PDF or Word documents to get AI-generated summaries and quizzes</p>
+                </div>
+                
+                <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="mb-4">
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Select a PDF or Word document</label>
+                        <input class="form-control" type="file" id="file" name="file" accept=".pdf,.doc,.docx" required>
+                        <div class="form-text">Supported formats: PDF, DOC, DOCX</div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Upload & Process</button>
+                    </div>
+                </form>
+                
+                <div class="alert alert-info">
+                    <h5>How it works:</h5>
+                    <ol>
+                        <li>Upload your document</li>
+                        <li>Our AI will extract and analyze the text</li>
+                        <li>Get a concise summary of the document</li>
+                        <li>Receive a quiz to test your understanding</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

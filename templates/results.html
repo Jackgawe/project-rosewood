@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Document Results: {{ filename }}</h3>
+            </div>
+            <div class="card-body">
+                <ul class="nav nav-tabs" id="resultTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="summary-tab" data-bs-toggle="tab" data-bs-target="#summary" type="button" role="tab" aria-controls="summary" aria-selected="true">Summary</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="quiz-tab" data-bs-toggle="tab" data-bs-target="#quiz" type="button" role="tab" aria-controls="quiz" aria-selected="false">Quiz</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content p-3" id="resultTabsContent">
+                    <div class="tab-pane fade show active" id="summary" role="tabpanel" aria-labelledby="summary-tab">
+                        <h4 class="mb-3">Document Summary</h4>
+                        <div class="p-3 bg-light rounded">
+                            {{ summary|safe|nl2br }}
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="quiz" role="tabpanel" aria-labelledby="quiz-tab">
+                        <h4 class="mb-3">Knowledge Quiz</h4>
+                        <div class="p-3 bg-light rounded quiz-content">
+                            {{ quiz|safe|nl2br }}
+                        </div>
+                        <div class="mt-3 text-center">
+                            <button id="showAnswers" class="btn btn-outline-primary">Show/Hide Answers</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">Process Another Document</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to toggle answer visibility
+        document.getElementById('showAnswers').addEventListener('click', function() {
+            const quizContent = document.querySelector('.quiz-content');
+            const answerRegex = /correct answer: ([A-D])/gi;
+            
+            if (quizContent.dataset.answersHidden === 'true') {
+                // Show answers
+                quizContent.innerHTML = quizContent.dataset.originalContent;
+                quizContent.dataset.answersHidden = 'false';
+            } else {
+                // Hide answers
+                if (!quizContent.dataset.originalContent) {
+                    quizContent.dataset.originalContent = quizContent.innerHTML;
+                }
+                
+                let hiddenContent = quizContent.dataset.originalContent.replace(answerRegex, 
+                    '<span class="text-primary answer-hidden">Answer hidden</span>');
+                quizContent.innerHTML = hiddenContent;
+                quizContent.dataset.answersHidden = 'true';
+            }
+        });
+    });
+</script>
+{% endblock %}
