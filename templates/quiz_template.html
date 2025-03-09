@@ -1,0 +1,21 @@
+<div class="quiz-container">
+    <h2>Quiz based on the document</h2>
+    
+    {% if questions %}
+        {% for question in questions %}
+            <div class="question-block">
+                <h3>Question {{ question.number }}</h3>
+                <p class="question-text">{{ question.question_text }}</p>
+                <div class="options">
+                    <p><strong>A)</strong> {{ question.correct_answer }}</p>
+                    <p><strong>B)</strong> {{ question.distractors[0] }}</p>
+                    <p><strong>C)</strong> {{ question.distractors[1] }}</p>
+                    <p><strong>D)</strong> {{ question.distractors[2] }}</p>
+                </div>
+                <p class="correct-answer"><strong>Correct answer:</strong> A</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No questions could be generated from the document.</p>
+    {% endif %}
+</div>

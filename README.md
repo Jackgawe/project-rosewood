@@ -1,4 +1,4 @@
-# AI Document Assistant
+# Project Rosewood
 
 A web application that uses AI to summarize PDFs and Word documents and generate quizzes based on their content. This application runs completely offline using Hugging Face Transformers models.
 

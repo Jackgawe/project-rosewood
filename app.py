@@ -8,6 +8,7 @@ import re
 from markupsafe import Markup
 from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
+import markdown
 
 # Load environment variables
 load_dotenv()
@@ -83,11 +84,15 @@ def generate_quiz(text):
         content_sentences = [s for s in sentences if len(s.split()) > 10]
         selected_sentences = content_sentences[:10]  # Take up to 10 substantial sentences
         
-        quiz = "# Quiz based on the document\n\n"
+        # Create HTML directly
+        quiz_questions = []
         
         # For each selected sentence, create a question
         question_count = min(5, len(selected_sentences))
         for i in range(question_count):
+            if i >= len(selected_sentences):
+                break
+                
             sentence = selected_sentences[i]
             words = sentence.split()
             
@@ -107,29 +112,38 @@ def generate_quiz(text):
                     if other_words:
                         distractors.append(other_words[0])
             
-            while len(distractors) < 3 and keywords[1:]:
-                distractors.append(keywords[len(distractors) + 1])
+            while len(distractors) < 3 and len(keywords) > 1:
+                for k in range(1, len(keywords)):
+                    if keywords[k] not in distractors:
+                        distractors.append(keywords[k])
+                        break
             
             # Fill in with generic distractors if needed
             generic_distractors = ["option", "choice", "alternative", "selection"]
             while len(distractors) < 3:
-                distractors.append(generic_distractors[len(distractors)])
+                for gd in generic_distractors:
+                    if gd not in distractors:
+                        distractors.append(gd)
+                        break
             
-            # Format the question
-            quiz += f"## Question {i+1}\n"
-            quiz += f"{question}\n\n"
-            quiz += f"A) {keyword}\n"
-            quiz += f"B) {distractors[0]}\n"
-            quiz += f"C) {distractors[1]}\n"
-            quiz += f"D) {distractors[2]}\n\n"
-            quiz += f"Correct answer: A\n\n"
+            # Limit to 3 distractors
+            distractors = distractors[:3]
+            
+            # Add to questions list
+            quiz_questions.append({
+                'number': i+1,
+                'question_text': question,
+                'correct_answer': keyword,
+                'distractors': distractors
+            })
         
-        if question_count == 0:
-            quiz += "Unable to generate questions from the provided text."
-            
-        return quiz
+        if not quiz_questions:
+            return Markup("<div class='quiz-container'><p>Unable to generate questions from the provided text.</p></div>")
+        
+        # Now render the quiz HTML
+        return render_template('quiz_template.html', questions=quiz_questions)
     except Exception as e:
-        return f"Error generating quiz: {str(e)}"
+        return Markup(f"<div class='quiz-container'><p>Error generating quiz: {str(e)}</p></div>")
 
 @app.route('/')
 def index():
@@ -187,4 +201,4 @@ def results():
                           quiz=session.get('quiz', ''))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)

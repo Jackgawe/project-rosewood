@@ -141,6 +141,55 @@ body {
     line-height: 1.6;
 }
 
+.quiz-container {
+    font-family: 'Poppins', sans-serif;
+}
+
+.quiz-container h2 {
+    color: #4a6cf7;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.question-block {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #4a6cf7;
+}
+
+.question-block h3 {
+    color: #4a6cf7;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.question-text {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.options {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.options p {
+    margin-bottom: 0.5rem;
+}
+
+.correct-answer {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #e7f3ff;
+    border-radius: 6px;
+    display: inline-block;
+}
+
 .answer-hidden {
     font-weight: bold;
     background-color: #e7f3ff;
