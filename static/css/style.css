@@ -18,7 +18,7 @@ body {
 }
 
 .bg-gradient {
-    background: linear-gradient(135deg, #4a6cf7 0%, #2b3cf7 100%) !important;
+    background: linear-gradient(135deg, #FF80AB 0%, #F06292 100%) !important;
 }
 
 .navbar {
@@ -39,8 +39,8 @@ body {
 }
 
 .form-control:focus {
-    border-color: #4a6cf7;
-    box-shadow: 0 0 0 0.25rem rgba(74, 108, 247, 0.25);
+    border-color: #F06292;
+    box-shadow: 0 0 0 0.25rem rgba(240, 98, 146, 0.25);
 }
 
 .input-group-text {
@@ -51,7 +51,7 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #4a6cf7 0%, #2b3cf7 100%);
+    background: linear-gradient(135deg, #FF80AB 0%, #F06292 100%);
     border: none;
     border-radius: 10px;
     padding: 0.6rem 1.5rem;
@@ -61,14 +61,14 @@ body {
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #3a5cf7 0%, #1b2cf7 100%);
+    background: linear-gradient(135deg, #F06292 0%, #E91E63 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .btn-outline-primary {
-    color: #4a6cf7;
-    border-color: #4a6cf7;
+    color: #F06292;
+    border-color: #F06292;
     border-radius: 10px;
     padding: 0.6rem 1.5rem;
     font-weight: 500;
@@ -76,7 +76,7 @@ body {
 }
 
 .btn-outline-primary:hover {
-    background-color: #4a6cf7;
+    background-color: #F06292;
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -125,13 +125,13 @@ body {
 
 .nav-tabs .nav-link:hover {
     border-bottom: 3px solid #e0e0e0;
-    color: #4a6cf7;
+    color: #F06292;
 }
 
 .nav-tabs .nav-link.active {
     border: none;
-    border-bottom: 3px solid #4a6cf7;
-    color: #4a6cf7;
+    border-bottom: 3px solid #F06292;
+    color: #F06292;
     font-weight: 600;
 }
 
@@ -146,7 +146,7 @@ body {
 }
 
 .quiz-container h2 {
-    color: #4a6cf7;
+    color: #F06292;
     margin-bottom: 1.5rem;
     font-weight: 600;
 }
@@ -157,11 +157,11 @@ body {
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    border-left: 4px solid #4a6cf7;
+    border-left: 4px solid #F06292;
 }
 
 .question-block h3 {
-    color: #4a6cf7;
+    color: #F06292;
     font-size: 1.2rem;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -185,17 +185,17 @@ body {
 .correct-answer {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
-    background-color: #e7f3ff;
+    background-color: #FCE4EC;
     border-radius: 6px;
     display: inline-block;
 }
 
 .answer-hidden {
     font-weight: bold;
-    background-color: #e7f3ff;
+    background-color: #FCE4EC;
     padding: 2px 8px;
     border-radius: 6px;
-    color: #4a6cf7;
+    color: #F06292;
 }
 
 footer {
