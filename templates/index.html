@@ -3,35 +3,62 @@
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-8">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h3 class="mb-0">Upload Document</h3>
+        <div class="card shadow">
+            <div class="card-header bg-gradient text-white">
+                <h3 class="mb-0"><i class="fas fa-file-upload me-2"></i>Upload Document</h3>
             </div>
             <div class="card-body">
                 <div class="text-center mb-4">
+                    <div class="icon-container mb-3">
+                        <i class="fas fa-brain fa-4x text-primary"></i>
+                    </div>
                     <h4>Welcome to AI Document Assistant</h4>
                     <p class="lead">Upload PDF or Word documents to get AI-generated summaries and quizzes</p>
                 </div>
                 
                 <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="mb-4">
                     <div class="mb-3">
-                        <label for="file" class="form-label">Select a PDF or Word document</label>
-                        <input class="form-control" type="file" id="file" name="file" accept=".pdf,.doc,.docx" required>
-                        <div class="form-text">Supported formats: PDF, DOC, DOCX</div>
+                        <label for="file" class="form-label"><i class="fas fa-file-pdf me-2"></i>Select a PDF or Word document</label>
+                        <div class="input-group">
+                            <input class="form-control" type="file" id="file" name="file" accept=".pdf,.doc,.docx" required>
+                            <span class="input-group-text"><i class="fas fa-paperclip"></i></span>
+                        </div>
+                        <div class="form-text"><i class="fas fa-info-circle me-1"></i>Supported formats: PDF, DOC, DOCX</div>
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-lg">Upload & Process</button>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-cloud-upload-alt me-2"></i>Upload & Process
+                        </button>
                     </div>
                 </form>
                 
                 <div class="alert alert-info">
-                    <h5>How it works:</h5>
-                    <ol>
-                        <li>Upload your document</li>
-                        <li>Our AI will extract and analyze the text</li>
-                        <li>Get a concise summary of the document</li>
-                        <li>Receive a quiz to test your understanding</li>
+                    <h5><i class="fas fa-lightbulb me-2"></i>How it works:</h5>
+                    <ol class="process-list">
+                        <li><i class="fas fa-upload me-2"></i>Upload your document</li>
+                        <li><i class="fas fa-file-alt me-2"></i>Our AI will extract and analyze the text</li>
+                        <li><i class="fas fa-compress-alt me-2"></i>Get a concise summary of the document</li>
+                        <li><i class="fas fa-question-circle me-2"></i>Receive a quiz to test your understanding</li>
                     </ol>
+                </div>
+                
+                <div class="features-section mt-4">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="feature-card p-3 rounded bg-light">
+                                <i class="fas fa-bolt text-primary mb-2"></i>
+                                <h6>Fast Processing</h6>
+                                <p class="small mb-0">Quick analysis of your documents</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-card p-3 rounded bg-light">
+                                <i class="fas fa-lock text-primary mb-2"></i>
+                                <h6>Privacy Focused</h6>
+                                <p class="small mb-0">All processing happens locally</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

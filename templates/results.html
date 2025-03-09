@@ -3,34 +3,46 @@
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-10">
-        <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-                <h3 class="mb-0">Document Results: {{ filename }}</h3>
+        <div class="card shadow mb-4">
+            <div class="card-header bg-gradient text-white">
+                <h3 class="mb-0">
+                    <i class="fas fa-file-alt me-2"></i>Document Results: {{ filename }}
+                </h3>
             </div>
             <div class="card-body">
                 <ul class="nav nav-tabs" id="resultTabs" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="summary-tab" data-bs-toggle="tab" data-bs-target="#summary" type="button" role="tab" aria-controls="summary" aria-selected="true">Summary</button>
+                        <button class="nav-link active" id="summary-tab" data-bs-toggle="tab" data-bs-target="#summary" type="button" role="tab" aria-controls="summary" aria-selected="true">
+                            <i class="fas fa-compress-alt me-2"></i>Summary
+                        </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="quiz-tab" data-bs-toggle="tab" data-bs-target="#quiz" type="button" role="tab" aria-controls="quiz" aria-selected="false">Quiz</button>
+                        <button class="nav-link" id="quiz-tab" data-bs-toggle="tab" data-bs-target="#quiz" type="button" role="tab" aria-controls="quiz" aria-selected="false">
+                            <i class="fas fa-question-circle me-2"></i>Quiz
+                        </button>
                     </li>
                 </ul>
                 
                 <div class="tab-content p-3" id="resultTabsContent">
                     <div class="tab-pane fade show active" id="summary" role="tabpanel" aria-labelledby="summary-tab">
-                        <h4 class="mb-3">Document Summary</h4>
-                        <div class="p-3 bg-light rounded">
+                        <h4 class="mb-3">
+                            <i class="fas fa-book-reader me-2"></i>Document Summary
+                        </h4>
+                        <div class="p-4 bg-light rounded shadow-sm">
                             {{ summary|safe|nl2br }}
                         </div>
                     </div>
                     <div class="tab-pane fade" id="quiz" role="tabpanel" aria-labelledby="quiz-tab">
-                        <h4 class="mb-3">Knowledge Quiz</h4>
-                        <div class="p-3 bg-light rounded quiz-content">
+                        <h4 class="mb-3">
+                            <i class="fas fa-graduation-cap me-2"></i>Knowledge Quiz
+                        </h4>
+                        <div class="p-4 bg-light rounded shadow-sm quiz-content">
                             {{ quiz|safe|nl2br }}
                         </div>
                         <div class="mt-3 text-center">
-                            <button id="showAnswers" class="btn btn-outline-primary">Show/Hide Answers</button>
+                            <button id="showAnswers" class="btn btn-outline-primary">
+                                <i class="fas fa-eye me-2"></i>Show/Hide Answers
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -38,7 +50,12 @@
         </div>
         
         <div class="text-center">
-            <a href="{{ url_for('index') }}" class="btn btn-primary">Process Another Document</a>
+            <a href="{{ url_for('index') }}" class="btn btn-primary">
+                <i class="fas fa-arrow-circle-left me-2"></i>Process Another Document
+            </a>
+            <button id="downloadSummary" class="btn btn-success ms-2">
+                <i class="fas fa-download me-2"></i>Download Summary
+            </button>
         </div>
     </div>
 </div>
@@ -54,6 +71,7 @@
                 // Show answers
                 quizContent.innerHTML = quizContent.dataset.originalContent;
                 quizContent.dataset.answersHidden = 'false';
+                this.innerHTML = '<i class="fas fa-eye-slash me-2"></i>Hide Answers';
             } else {
                 // Hide answers
                 if (!quizContent.dataset.originalContent) {
@@ -64,7 +82,25 @@
                     '<span class="text-primary answer-hidden">Answer hidden</span>');
                 quizContent.innerHTML = hiddenContent;
                 quizContent.dataset.answersHidden = 'true';
+                this.innerHTML = '<i class="fas fa-eye me-2"></i>Show Answers';
             }
+        });
+        
+        // Function to download summary
+        document.getElementById('downloadSummary').addEventListener('click', function() {
+            const summaryText = document.querySelector('#summary .bg-light').innerText;
+            const filename = "{{ filename }}_summary.txt";
+            
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(summaryText));
+            element.setAttribute('download', filename);
+            
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            
+            element.click();
+            
+            document.body.removeChild(element);
         });
     });
 </script>
