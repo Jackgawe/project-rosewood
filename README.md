@@ -1,6 +1,8 @@
 # Project Rosewood
 
-A web application that uses AI to summarize PDFs and Word documents and generate quizzes based on their content. This application runs completely offline using Hugging Face Transformers models.
+A web-based application that utilizes artificial intelligence to generate summaries of PDF and Word documents, as well as create interactive quizzes based on their content. This application operates completely offline, utilizing Hugging Face Transformers models.
+
+
 
 ## Features
 
@@ -10,8 +12,11 @@ A web application that uses AI to summarize PDFs and Word documents and generate
 - Create interactive quizzes based on document content
 - Clean, responsive user interface
 - No API keys or internet connection required after initial setup
+- Customizable quiz settings (Coming soon!!)
+- Option to view answers 
+- Option to download summary
 
-## Setup Instructions
+## Setup Instructions (important!)
 
 ### Prerequisites
 
@@ -60,10 +65,12 @@ http://127.0.0.1:5000
 - Hugging Face Transformers: AI-powered summarization and text processing
 - PyTorch: Deep learning framework for running the AI models
 - Bootstrap: Frontend styling
+- Markdown: For formatting the summary
 
 ## How It Works
 
 ### Summarization
+The application uses the `facebook/bart-large-cnn` model from Hugging Face, which is specifically trained for text summarization. For longer documents, the text is split into chunks and each chunk is summarized separately, then combined.
 The application uses the `facebook/bart-large-cnn` model from Hugging Face, which is specifically trained for text summarization. For longer documents, the text is split into chunks and each chunk is summarized separately, then combined.
 
 ### Quiz Generation
@@ -93,3 +100,12 @@ The application uses a custom algorithm to:
 - Document comparison functionality
 - Save and export summaries and quizzes
 - Option to use smaller, faster models for resource-constrained systems
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Hugging Face for providing the `facebook/bart-large-cnn` model
+

@@ -1,5 +1,27 @@
+:root {
+    --primary: #9C27B0;
+    --primary-light: #CE93D8;
+    --primary-dark: #7B1FA2;
+    --secondary: #00BCD4;
+    --secondary-light: #80DEEA;
+    --secondary-dark: #0097A7;
+    --accent: #FF9800;
+    --accent-light: #FFCC80;
+    --accent-dark: #F57C00;
+    --success: #4CAF50;
+    --success-light: #A5D6A7;
+    --success-dark: #388E3C;
+    --warning: #FFC107;
+    --warning-light: #FFE082;
+    --warning-dark: #FFA000;
+    --danger: #F44336;
+    --danger-light: #EF9A9A;
+    --danger-dark: #D32F2F;
+    --light-bg: #F5F5F5;
+}
+
 body {
-    background-color: #f8f9fa;
+    background-color: var(--light-bg);
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -18,7 +40,7 @@ body {
 }
 
 .bg-gradient {
-    background: linear-gradient(135deg, #FF80AB 0%, #F06292 100%) !important;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
 }
 
 .navbar {
@@ -39,8 +61,8 @@ body {
 }
 
 .form-control:focus {
-    border-color: #F06292;
-    box-shadow: 0 0 0 0.25rem rgba(240, 98, 146, 0.25);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(156, 39, 176, 0.25);
 }
 
 .input-group-text {
@@ -51,7 +73,7 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #FF80AB 0%, #F06292 100%);
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     border: none;
     border-radius: 10px;
     padding: 0.6rem 1.5rem;
@@ -61,14 +83,14 @@ body {
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #F06292 0%, #E91E63 100%);
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-dark));
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .btn-outline-primary {
-    color: #F06292;
-    border-color: #F06292;
+    color: var(--primary);
+    border-color: var(--primary);
     border-radius: 10px;
     padding: 0.6rem 1.5rem;
     font-weight: 500;
@@ -76,14 +98,14 @@ body {
 }
 
 .btn-outline-primary:hover {
-    background-color: #F06292;
+    background-color: var(--primary);
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-success {
-    background: linear-gradient(135deg, #28a745 0%, #20913a 100%);
+    background: linear-gradient(135deg, var(--success), var(--success-dark));
     border: none;
     border-radius: 10px;
     padding: 0.6rem 1.5rem;
@@ -93,7 +115,7 @@ body {
 }
 
 .btn-success:hover {
-    background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+    background: linear-gradient(135deg, var(--success-dark), var(--success-dark));
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
@@ -125,13 +147,13 @@ body {
 
 .nav-tabs .nav-link:hover {
     border-bottom: 3px solid #e0e0e0;
-    color: #F06292;
+    color: var(--secondary);
 }
 
 .nav-tabs .nav-link.active {
     border: none;
-    border-bottom: 3px solid #F06292;
-    color: #F06292;
+    border-bottom: 3px solid var(--secondary);
+    color: var(--secondary);
     font-weight: 600;
 }
 
@@ -146,7 +168,7 @@ body {
 }
 
 .quiz-container h2 {
-    color: #F06292;
+    color: var(--primary);
     margin-bottom: 1.5rem;
     font-weight: 600;
 }
@@ -157,11 +179,11 @@ body {
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    border-left: 4px solid #F06292;
+    border-left: 4px solid var(--accent);
 }
 
 .question-block h3 {
-    color: #F06292;
+    color: var(--accent);
     font-size: 1.2rem;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -185,17 +207,18 @@ body {
 .correct-answer {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
-    background-color: #FCE4EC;
+    background-color: var(--success-light);
     border-radius: 6px;
     display: inline-block;
+    color: var(--success-dark);
 }
 
 .answer-hidden {
     font-weight: bold;
-    background-color: #FCE4EC;
+    background-color: var(--secondary-light);
     padding: 2px 8px;
     border-radius: 6px;
-    color: #F06292;
+    color: var(--secondary-dark);
 }
 
 footer {
@@ -210,9 +233,10 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
     border-radius: 50%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    color: white;
 }
 
 .process-list {
